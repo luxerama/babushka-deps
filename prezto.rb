@@ -1,6 +1,6 @@
 dep 'prezto', :argument do 
   # requires 'xcode tools'
-  met? { which 'bla' }
+  met? { "~/.oh-my-zsh".p.exists? }
   meet do
     shell "git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.oh-my-zsh"
     Dir["#{ENV['HOME']}/.oh-my-zsh/runcoms/z{shenv,shrc,login,logout}"].each do |path|
