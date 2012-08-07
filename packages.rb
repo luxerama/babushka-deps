@@ -4,7 +4,8 @@ dep 'ctags.managed' do
   after :on => :osx do
     if which "ctags" != "/usr/local/bin/ctags"
       ctags_path = "/usr/bin/ctags"
-      shell "mv #{ctags_path} /usr/bin/ctags_original", :sudo => !"/usr/bin/ctags_original".p.writable?
+      orig_ctags_path = "/usr/bin/ctags_original"
+      shell "mv #{ctags_path} #{orig_ctags_path}", :sudo => (!ctags_path.p.writable? || !orig_ctags_path.p.writable?)
     end
   end
 end
@@ -13,12 +14,12 @@ dep 'git.managed'
 
 dep 'hub.managed'
 
-dep 'macvim.managed' do
-  met? :on => :osx do
+dep 'macvim.managed', :on => :osx do
+  met? do
     "~/Applications/MacVim.app".p.exist?
   end
 
-  after :on => :osx do
+  after do
     system "brew linkapps macvim"
   end
 end
