@@ -8,12 +8,12 @@ dep 'yadr', :argument, :on => :osx do
 
   path = "#{ENV['HOME']}/.yadr"
 
-  met? { path.p.exist? }
+  met? { false }  #path.p.exist? }
 
   meet do
     system "git clone https://github.com/skwp/dotfiles #{path}"
     cd path do
-      system "rake install"
+      system "cd #{path} && rake install"
     end
   end
 
