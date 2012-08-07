@@ -1,5 +1,10 @@
 dep 'yadr', :argument, :on => :osx do 
-  requires 'ack.managed', 'ctags.managed', 'git.managed', 'macvim.managed', 'hub.managed', 'prezto'
+  requires 'luxerama:ack.managed',
+    'luxerama:ctags.managed',
+    'luxerama:git.managed',
+    'luxerama:macvim.managed',
+    'luxerama:hub.managed', 
+    'luxerama:prezto'
 
   path = "#{ENV['HOME']}/.yadri"
 
