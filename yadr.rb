@@ -6,12 +6,12 @@ dep 'yadr', :argument, :on => :osx do
     'luxerama:hub.managed', 
     'luxerama:prezto'
 
-  path = "#{ENV['HOME']}/.yadri"
+  path = "#{ENV['HOME']}/.yadr"
 
   met? { path.p.exist? }
 
   meet do
-    system "git clone https://github.com/skwp/dotfiles ~/.yadri"
+    system "git clone https://github.com/skwp/dotfiles #{path}"
     cd path do
       system "rake install"
     end
